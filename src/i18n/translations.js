@@ -10,8 +10,8 @@ const translations = {
         // Filters
         passport: "Pasaport",
         passportOptions: {
-            "tr-red": "Türkiye (Kırmızı)",
-            "tr-green": "Türkiye (Yeşil)"
+            "tr-red": "Bordo Pasaport",
+            "tr-green": "Yeşil Pasaport"
         },
         flightType: "Uçuş Tipi",
         flightTypeOptions: {
@@ -60,8 +60,8 @@ const translations = {
         // Filters
         passport: "Passport",
         passportOptions: {
-            "tr-red": "Turkey (Red)",
-            "tr-green": "Turkey (Green)"
+            "tr-red": "Turkish Passport",
+            "tr-green": "Special Passport"
         },
         flightType: "Flight Type",
         flightTypeOptions: {
