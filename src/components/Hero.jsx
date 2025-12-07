@@ -1,5 +1,5 @@
-import React from 'react';
-import { Globe, Search } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Globe, Search, ChevronDown, Check } from 'lucide-react';
 import PropTypes from 'prop-types';
 import { useLanguage } from '../i18n/LanguageContext';
 
@@ -9,8 +9,25 @@ const Hero = ({ filters, setFilters, onSearch, loading }) => {
     const flightTypeOptions = tOptions('flightTypeOptions');
     const weatherOptions = tOptions('weatherOptions');
 
+    // State for custom dropdown visibility
+    const [isWeatherOpen, setIsWeatherOpen] = useState(false);
+    const weatherRef = useRef(null);
+
     // Get today's date in YYYY-MM-DD format
     const today = new Date().toISOString().split('T')[0];
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (weatherRef.current && !weatherRef.current.contains(event.target)) {
+                setIsWeatherOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [weatherRef]);
 
     // Handler for flight type change
     const handleFlightTypeChange = (newType) => {
@@ -20,6 +37,35 @@ const Hero = ({ filters, setFilters, onSearch, loading }) => {
             // Clear return date if switching to one-way
             returnDate: newType === 'one-way' ? '' : filters.returnDate
         });
+    };
+
+    // Handler for multi-select weather change
+    const handleWeatherChange = (value) => {
+        let newWeather = [...filters.weather];
+
+        if (value === 'any') {
+            newWeather = ['any'];
+        } else {
+            // Remove 'any' if generic selection was active
+            if (newWeather.includes('any')) {
+                newWeather = [];
+            }
+
+            if (newWeather.includes(value)) {
+                // Deselect
+                newWeather = newWeather.filter(item => item !== value);
+            } else {
+                // Select
+                newWeather.push(value);
+            }
+
+            // If nothing selected, default back to 'any'
+            if (newWeather.length === 0) {
+                newWeather = ['any'];
+            }
+        }
+
+        setFilters({ ...filters, weather: newWeather });
     };
 
     return (
@@ -68,18 +114,35 @@ const Hero = ({ filters, setFilters, onSearch, loading }) => {
                     </select>
                 </div>
 
-                <div className="filter-group">
-                    <label htmlFor="weather-select" className="filter-label">{t('weather')}</label>
-                    <select
-                        id="weather-select"
-                        value={filters.weather}
-                        onChange={(e) => setFilters({ ...filters, weather: e.target.value })}
-                        className="filter-select"
+                {/* Custom Multi-Select Dropdown for Weather */}
+                <div className="filter-group" ref={weatherRef}>
+                    <label className="filter-label">{t('weather')}</label>
+                    <div
+                        className={`custom-select-trigger ${isWeatherOpen ? 'active' : ''}`}
+                        onClick={() => setIsWeatherOpen(!isWeatherOpen)}
                     >
-                        {Object.entries(weatherOptions).map(([value, label]) => (
-                            <option key={value} value={value}>{label}</option>
-                        ))}
-                    </select>
+                        <span className="truncate-text">
+                            {filters.weather.includes('any')
+                                ? weatherOptions['any']
+                                : filters.weather.map(w => weatherOptions[w]).join(', ')}
+                        </span>
+                        <ChevronDown size={14} className={`dropdown-arrow ${isWeatherOpen ? 'open' : ''}`} />
+                    </div>
+
+                    {isWeatherOpen && (
+                        <div className="custom-select-options">
+                            {Object.entries(weatherOptions).map(([value, label]) => (
+                                <div
+                                    key={value}
+                                    className={`custom-option ${filters.weather.includes(value) ? 'selected' : ''}`}
+                                    onClick={() => handleWeatherChange(value)}
+                                >
+                                    <span>{label}</span>
+                                    {filters.weather.includes(value) && <Check size={14} className="check-icon" />}
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 <div className="filter-group">
@@ -128,7 +191,7 @@ Hero.propTypes = {
     filters: PropTypes.shape({
         passport: PropTypes.string,
         flightType: PropTypes.string,
-        weather: PropTypes.string,
+        weather: PropTypes.arrayOf(PropTypes.string),
         departureDate: PropTypes.string,
         returnDate: PropTypes.string
     }).isRequired,

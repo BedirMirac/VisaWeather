@@ -9,7 +9,7 @@ import { useLanguage } from './i18n/LanguageContext';
 function App() {
   const [filters, setFilters] = useState({
     passport: 'tr-red',
-    weather: 'any',
+    weather: ['any'],
     flightType: 'one-way',
     departureDate: '',
     returnDate: ''
@@ -61,19 +61,24 @@ function App() {
       );
 
       let filtered = countriesWithWeather;
-      if (filters.weather !== 'any') {
+
+      // Filter logic: If 'any' is NOT selected, apply filters
+      if (!filters.weather.includes('any') && filters.weather.length > 0) {
         filtered = countriesWithWeather.filter(country => {
           const temp = country.temp;
-          switch (filters.weather) {
-            case 'sunny':
-              return temp >= 20;
-            case 'mild':
-              return temp >= 10 && temp < 20;
-            case 'snow':
-              return temp < 5;
-            default:
-              return true;
-          }
+          // Check if ANY of the selected weather conditions match (OR logic)
+          return filters.weather.some(condition => {
+            switch (condition) {
+              case 'sunny':
+                return temp >= 20;
+              case 'mild':
+                return temp >= 10 && temp < 20;
+              case 'snow':
+                return temp < 5;
+              default:
+                return true;
+            }
+          });
         });
       }
 
