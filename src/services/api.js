@@ -274,81 +274,122 @@ const CLIMATE_DATA = {
     'Cairo': [16.1, 16.7, 22.8, 31.1, 36.2, 39.0, 40.8, 40.2, 39.3, 31.7, 22.5, 15.9], // Egypt
 
     // SUB-SAHARAN AFRICA
-    'Cape Town': [26.0, 25.2, 21.3, 18.4, 13.6, 10.8, 9.0, 13.3, 13.8, 18.3, 21.9, 24.5], // South Africa
-    'Port Louis': [4.1, 5.7, 9.1, 16.2, 19.3, 24.4, 27.8, 30.2, 25.4, 19.2, 12.4, 6.9], // Mauritius
-    'Gaborone': [4.1, 5.6, 9.3, 13.7, 19.7, 23.8, 27.9, 28.3, 26.2, 19.9, 14.3, 7.2], // Botswana
-    'Mbabane': [4.1, 4.5, 8.8, 14.4, 19.4, 26.4, 28.5, 29.7, 26.1, 20.3, 12.9, 8.2], // Eswatini
-    'Banjul': [5.4, 7.1, 11.5, 15.5, 21.3, 26.5, 26.7, 30.1, 24.3, 17.8, 13.0, 6.0], // Gambia
-    'Luanda': [5.2, 6.7, 10.8, 16.2, 20.1, 25.2, 29.3, 28.0, 26.5, 18.0, 12.8, 5.9], // Angola
-    'Malabo': [4.6, 6.1, 10.2, 15.4, 21.1, 25.6, 28.3, 28.3, 24.2, 20.2, 11.7, 6.0], // Equatorial Guinea
-    'Lusaka': [5.0, 7.2, 11.3, 14.2, 21.3, 24.0, 29.4, 28.0, 24.6, 17.7, 13.9, 8.3], // Zambia
-    'Sao Tome': [4.5, 6.8, 9.9, 14.5, 19.5, 25.4, 27.9, 29.8, 24.4, 18.5, 11.7, 8.4], // Sao Tome
-    'Nairobi': [23.6, 26.8, 27.4, 28.6, 29.6, 28.6, 29.9, 29.6, 29.7, 29.6, 25.9, 26.4], // Kenya
-    'Dar es Salaam': [4.4, 6.1, 10.0, 15.6, 20.4, 24.3, 28.5, 28.0, 25.6, 18.8, 11.9, 5.9], // Tanzania
-    'Yaounde': [6.2, 6.1, 9.4, 14.8, 19.6, 25.0, 28.4, 29.6, 25.2, 18.2, 13.3, 8.4], // Cameroon
-    'Dakar': [4.8, 5.5, 10.2, 13.8, 18.7, 25.1, 26.9, 29.8, 23.7, 20.0, 13.4, 6.2], // Senegal
-    'Accra': [23.6, 25.8, 26.7, 29.3, 31.3, 30.4, 30.4, 27.7, 29.4, 28.5, 27.3, 27.0], // Ghana
-    'Antananarivo': [6.3, 4.8, 10.8, 13.6, 18.5, 25.1, 29.1, 28.2, 25.4, 18.0, 12.8, 6.7], // Madagascar
-    'Harare': [5.7, 6.6, 9.5, 14.9, 19.6, 24.7, 29.4, 28.0, 25.1, 19.1, 14.4, 6.5], // Zimbabwe
-    'Maputo': [5.5, 5.3, 9.8, 13.6, 18.5, 26.0, 26.6, 28.7, 24.3, 18.2, 14.4, 8.0], // Mozambique
-    'Khartoum': [24.3, 25.5, 27.9, 31.1, 29.6, 29.7, 29.8, 29.6, 28.1, 28.1, 26.5, 26.9], // Sudan
-    'Djibouti': [6.2, 6.9, 10.3, 15.6, 20.4, 25.2, 27.5, 27.6, 24.8, 18.6, 13.5, 6.5], // Djibouti
-    'Kigali': [4.1, 7.5, 11.3, 13.8, 20.1, 26.1, 27.4, 29.5, 25.1, 18.9, 13.6, 6.7], // Rwanda
-    'Lome': [3.9, 5.4, 11.2, 15.9, 19.7, 26.2, 28.7, 28.8, 24.5, 20.0, 12.2, 8.2], // Togo
-    'Abidjan': [6.2, 5.4, 10.1, 14.1, 20.4, 24.3, 28.6, 28.9, 25.2, 19.3, 12.1, 6.9], // Ivory Coast
-    'Nouakchott': [5.9, 6.0, 9.4, 14.4, 21.5, 26.2, 27.5, 28.1, 26.0, 20.0, 13.2, 7.3], // Mauritania
-    'Praia': [5.7, 7.1, 8.9, 15.6, 20.4, 23.6, 29.3, 28.4, 25.6, 19.0, 11.9, 7.1], // Cape Verde
+    // Note: Cape Town has correct Southern Hemisphere data (summer Jan-Feb, winter Jun-Aug)
+    'Cape Town': [26.0, 25.2, 21.3, 18.4, 13.6, 10.8, 9.0, 13.3, 13.8, 18.3, 21.9, 24.5], // South Africa ✓
+    // Mauritius (Southern Hemisphere - summer in Dec-Feb)
+    'Port Louis': [27.0, 27.5, 27.0, 25.5, 23.0, 21.0, 20.0, 20.5, 21.5, 23.5, 25.0, 26.5], // Mauritius ✓
+    // Botswana (Southern Hemisphere)
+    'Gaborone': [31.0, 30.0, 28.5, 25.0, 22.0, 18.0, 18.5, 21.0, 25.0, 28.0, 29.5, 30.5], // Botswana ✓
+    // Eswatini (Southern Hemisphere)
+    'Mbabane': [25.0, 25.0, 23.5, 21.0, 18.0, 15.0, 15.5, 17.0, 20.0, 22.0, 23.5, 24.5], // Eswatini ✓
+    // Gambia (Northern Hemisphere - near equator, but north)
+    'Banjul': [24.0, 25.0, 27.0, 29.0, 30.0, 30.5, 28.0, 27.5, 28.0, 29.0, 27.0, 25.0], // Gambia
+    // Angola (Southern Hemisphere - coastal tropical)
+    'Luanda': [27.5, 28.0, 28.0, 27.5, 25.0, 22.0, 20.0, 21.0, 23.0, 25.0, 26.5, 27.0], // Angola ✓
+    // Equatorial Guinea (near Equator)
+    'Malabo': [26.0, 26.5, 27.0, 27.0, 26.5, 25.0, 24.0, 24.0, 25.0, 25.5, 26.0, 26.0], // Equatorial Guinea
+    // Zambia (Southern Hemisphere)
+    'Lusaka': [26.0, 26.0, 25.5, 24.0, 21.0, 18.0, 18.0, 21.0, 25.0, 28.0, 27.5, 26.5], // Zambia ✓
+    // Sao Tome (near Equator)
+    'Sao Tome': [26.5, 27.0, 27.0, 26.5, 25.5, 24.0, 23.0, 23.5, 24.5, 25.5, 26.0, 26.5], // Sao Tome
+    // Kenya (Equatorial - relatively stable temps year-round)
+    'Nairobi': [25.0, 26.0, 25.5, 24.0, 22.5, 21.0, 20.0, 21.0, 23.0, 24.5, 23.0, 24.0], // Kenya
+    // Tanzania (Southern Hemisphere)
+    'Dar es Salaam': [31.0, 31.5, 31.0, 29.5, 28.0, 27.0, 26.5, 27.0, 28.0, 29.5, 30.5, 31.0], // Tanzania ✓
+    // Cameroon (Northern Hemisphere - near equator)
+    'Yaounde': [27.5, 28.0, 28.0, 27.5, 26.5, 25.5, 24.5, 25.0, 26.0, 26.5, 27.0, 27.0], // Cameroon
+    // Senegal (Northern Hemisphere)
+    'Dakar': [24.0, 24.5, 25.5, 26.0, 27.0, 29.0, 28.5, 28.0, 28.5, 29.0, 27.5, 25.0], // Senegal
+    // Ghana (near Equator)
+    'Accra': [28.0, 29.0, 29.5, 29.5, 28.5, 26.5, 25.5, 25.0, 26.0, 27.5, 28.5, 28.5], // Ghana
+    // Madagascar (Southern Hemisphere)
+    'Antananarivo': [25.5, 25.0, 24.0, 22.0, 19.0, 16.0, 15.5, 17.0, 20.0, 23.0, 24.5, 25.0], // Madagascar ✓
+    // Zimbabwe (Southern Hemisphere)
+    'Harare': [26.0, 25.5, 25.0, 23.0, 20.0, 17.5, 17.0, 20.0, 24.0, 26.5, 26.5, 26.0], // Zimbabwe ✓
+    // Mozambique (Southern Hemisphere)
+    'Maputo': [30.0, 30.0, 29.0, 27.0, 24.0, 22.0, 22.0, 23.0, 25.0, 27.0, 28.5, 29.5], // Mozambique ✓
+    // Sudan (Northern Hemisphere - desert)
+    'Khartoum': [32.0, 34.0, 37.0, 40.0, 42.0, 41.0, 38.0, 36.0, 38.0, 39.0, 35.0, 32.0], // Sudan
+    // Djibouti (Northern Hemisphere - hot desert)
+    'Djibouti': [29.0, 30.0, 31.0, 33.0, 36.0, 39.0, 42.0, 41.0, 37.0, 33.0, 30.0, 29.0], // Djibouti
+    // Rwanda (near Equator - relatively mild)
+    'Kigali': [21.0, 21.5, 21.0, 21.0, 20.5, 20.0, 20.5, 21.5, 22.0, 21.5, 20.5, 20.5], // Rwanda
+    // Togo (Northern Hemisphere)
+    'Lome': [27.0, 28.0, 29.0, 29.0, 28.0, 26.0, 25.0, 25.0, 26.0, 27.5, 28.0, 27.5], // Togo
+    // Ivory Coast (Northern Hemisphere)
+    'Abidjan': [27.5, 28.5, 28.5, 28.5, 27.5, 25.5, 24.5, 24.5, 25.5, 27.0, 28.0, 27.5], // Ivory Coast
+    // Mauritania (Northern Hemisphere - desert)
+    'Nouakchott': [24.0, 26.0, 28.0, 30.0, 32.0, 34.0, 33.0, 32.0, 33.0, 31.0, 28.0, 25.0], // Mauritania
+    // Cape Verde (Northern Hemisphere - Atlantic islands)
+    'Praia': [23.0, 23.0, 24.0, 24.5, 25.0, 26.0, 27.0, 28.0, 28.0, 27.5, 26.0, 24.0], // Cape Verde
 
     // SOUTH AMERICA
-    'Rio de Janeiro': [24.5, 25.3, 27.0, 30.2, 32.2, 30.1, 28.9, 28.7, 29.8, 28.9, 27.3, 25.2], // Brazil
-    'Buenos Aires': [25.1, 24.3, 20.4, 18.5, 12.8, 9.6, 9.6, 13.2, 12.6, 16.4, 21.6, 22.5], // Argentina
-    'Santiago': [23.5, 25.2, 22.5, 16.7, 14.1, 10.6, 11.4, 10.9, 14.5, 16.8, 22.1, 24.5], // Chile
-    'Bogota': [4.0, 7.0, 9.6, 15.0, 21.4, 26.3, 27.1, 27.9, 25.5, 18.3, 11.8, 7.0], // Colombia
-    'Lima': [4.0, 6.6, 10.8, 14.8, 19.2, 25.8, 26.7, 28.8, 26.1, 20.0, 13.3, 6.6], // Peru
-    'Quito': [4.3, 5.6, 8.6, 13.7, 19.1, 25.6, 28.8, 29.1, 24.7, 19.8, 13.3, 6.5], // Ecuador
-    'Montevideo': [3.6, 7.4, 10.0, 14.2, 19.6, 26.4, 27.5, 30.0, 26.0, 18.8, 13.8, 5.8], // Uruguay
-    'Asuncion': [4.9, 6.2, 11.5, 15.2, 21.2, 24.8, 27.0, 29.1, 26.0, 19.5, 14.4, 6.0], // Paraguay
-    'La Paz': [4.0, 7.3, 11.0, 15.3, 21.2, 26.0, 27.3, 29.4, 24.0, 19.5, 14.2, 5.7], // Bolivia
-    'Caracas': [5.3, 4.5, 11.0, 13.5, 18.8, 26.1, 26.8, 30.3, 25.1, 17.8, 13.0, 7.5], // Venezuela
+    // Southern Hemisphere cities have summer in Dec-Feb, winter in Jun-Aug
+    'Rio de Janeiro': [30.0, 30.5, 29.0, 27.0, 25.0, 23.0, 22.5, 23.0, 24.0, 26.0, 27.5, 29.0], // Brazil ✓
+    'Buenos Aires': [30.0, 29.0, 26.0, 21.0, 16.0, 12.0, 11.5, 13.5, 16.0, 20.0, 24.0, 28.0], // Argentina ✓
+    'Santiago': [29.0, 28.5, 25.0, 20.0, 15.0, 11.0, 10.0, 12.0, 15.0, 19.0, 23.5, 27.0], // Chile ✓
+    // Colombia - near equator, stable temps
+    'Bogota': [19.0, 19.5, 19.0, 18.5, 18.0, 17.5, 17.0, 17.5, 18.0, 18.5, 18.5, 19.0], // Colombia (high altitude)
+    // Peru - Lima is on the coast, mild year-round due to ocean current
+    'Lima': [26.0, 27.0, 26.0, 23.0, 20.0, 18.0, 17.0, 17.0, 18.0, 20.0, 22.0, 24.0], // Peru ✓
+    // Ecuador - near equator, Quito is high altitude
+    'Quito': [21.0, 21.0, 21.0, 21.0, 21.5, 21.5, 21.5, 22.0, 22.0, 21.5, 21.0, 21.0], // Ecuador (high altitude)
+    // Uruguay (Southern Hemisphere)
+    'Montevideo': [28.0, 27.0, 24.0, 19.0, 15.0, 12.0, 11.0, 12.5, 15.0, 18.0, 22.0, 26.0], // Uruguay ✓
+    // Paraguay (Southern Hemisphere)
+    'Asuncion': [34.0, 33.0, 31.0, 27.0, 23.0, 20.0, 20.0, 22.0, 25.0, 28.0, 31.0, 33.0], // Paraguay ✓
+    // Bolivia (Southern Hemisphere, high altitude)
+    'La Paz': [18.0, 18.0, 17.5, 17.0, 15.0, 13.0, 12.0, 13.0, 15.0, 17.0, 18.0, 18.0], // Bolivia ✓
+    // Venezuela (near equator, tropical)
+    'Caracas': [27.0, 28.0, 29.0, 29.0, 28.0, 27.0, 26.5, 27.0, 27.5, 28.0, 27.5, 27.0], // Venezuela
 
-    // CENTRAL AMERICA
-    'Panama City': [4.9, 6.7, 9.4, 14.8, 20.1, 25.5, 28.2, 28.2, 25.3, 19.4, 12.2, 6.2], // Panama
-    'San Jose': [4.7, 5.2, 10.8, 15.2, 18.7, 24.7, 29.5, 27.9, 25.2, 19.3, 12.1, 5.6], // Costa Rica
-    'Guatemala City': [3.5, 6.9, 9.1, 14.3, 20.3, 26.3, 28.1, 28.6, 24.6, 20.3, 12.3, 6.2], // Guatemala
-    'Tegucigalpa': [3.7, 7.0, 8.7, 15.2, 21.1, 23.6, 27.3, 28.3, 24.4, 20.1, 13.7, 7.9], // Honduras
-    'San Salvador': [4.3, 4.7, 10.9, 15.3, 18.8, 24.2, 29.5, 29.5, 26.0, 18.7, 13.6, 7.8], // El Salvador
-    'Managua': [6.0, 5.3, 9.7, 14.6, 18.7, 25.1, 27.1, 28.3, 24.7, 19.6, 12.0, 5.9], // Nicaragua
-    'Belmopan': [3.7, 5.7, 10.8, 14.6, 19.0, 24.0, 28.4, 29.7, 24.9, 20.2, 12.8, 7.7], // Belize
-    'Mexico City': [4.4, 6.2, 9.4, 16.3, 20.9, 24.8, 27.9, 28.1, 25.2, 19.1, 13.2, 7.1], // Mexico
-    'Havana': [5.5, 5.0, 9.2, 15.9, 18.7, 23.5, 28.5, 28.8, 24.6, 20.2, 11.8, 7.1], // Cuba
+    // CENTRAL AMERICA - Tropical climate, warm year-round, slightly cooler Dec-Feb
+    'Panama City': [31.0, 32.0, 32.5, 31.5, 30.0, 29.5, 29.5, 29.5, 29.0, 29.0, 29.5, 30.5], // Panama
+    'San Jose': [24.0, 24.5, 26.0, 26.5, 25.5, 25.0, 25.0, 25.5, 25.0, 24.5, 24.0, 24.0], // Costa Rica (high altitude)
+    'Guatemala City': [25.0, 27.0, 28.5, 28.0, 26.0, 24.0, 24.0, 24.5, 24.0, 24.0, 24.0, 24.5], // Guatemala
+    'Tegucigalpa': [26.0, 28.0, 30.0, 30.0, 28.5, 27.0, 26.5, 27.0, 27.0, 26.5, 26.0, 25.5], // Honduras
+    'San Salvador': [32.0, 33.0, 34.0, 33.0, 31.0, 30.0, 31.0, 31.0, 30.0, 30.0, 31.0, 31.5], // El Salvador
+    'Managua': [32.0, 33.0, 35.0, 35.0, 33.0, 31.0, 31.0, 31.5, 31.0, 31.0, 31.0, 32.0], // Nicaragua
+    'Belmopan': [27.0, 28.0, 30.0, 32.0, 32.5, 31.0, 30.5, 31.0, 31.0, 30.0, 28.0, 27.0], // Belize
+    'Mexico City': [22.0, 24.0, 26.0, 27.0, 26.0, 24.0, 22.0, 22.5, 22.0, 21.5, 21.0, 21.0], // Mexico (high altitude)
+    'Havana': [26.0, 27.0, 28.0, 29.5, 30.5, 31.0, 32.0, 32.0, 31.5, 30.0, 28.0, 26.5], // Cuba
 
-    // CARIBBEAN
-    'Punta Cana': [6.2, 6.4, 10.0, 14.8, 21.0, 25.0, 27.9, 28.6, 23.7, 19.4, 11.8, 8.0], // Dominican Republic
-    'Kingston': [6.4, 5.3, 11.5, 15.6, 18.9, 24.8, 28.1, 29.2, 25.0, 17.5, 13.3, 8.2], // Jamaica
-    'Port of Spain': [5.3, 4.6, 10.6, 15.6, 19.2, 24.6, 26.9, 28.9, 23.9, 19.4, 13.4, 6.0], // Trinidad
-    'Bridgetown': [6.1, 4.6, 9.2, 15.8, 19.8, 23.5, 28.5, 29.4, 26.2, 19.9, 11.7, 8.0], // Barbados
-    'Nassau': [5.0, 7.1, 10.6, 13.5, 20.3, 23.6, 28.8, 28.8, 24.5, 18.0, 12.1, 7.0], // Bahamas
-    "St. John's": [5.1, 5.0, 9.4, 14.5, 21.1, 25.0, 29.3, 28.8, 25.4, 19.0, 11.7, 6.6], // Antigua
-    'Roseau': [4.2, 7.4, 10.3, 16.2, 20.1, 26.4, 28.6, 28.1, 24.1, 20.3, 11.9, 6.3], // Dominica
-    'Castries': [4.2, 6.4, 8.6, 14.6, 20.1, 25.2, 26.9, 29.6, 25.3, 18.5, 12.5, 6.5], // Saint Lucia
-    'Kingstown': [4.3, 4.8, 10.1, 14.3, 18.7, 25.2, 28.2, 27.8, 26.0, 18.1, 13.4, 6.8], // St. Vincent
-    'Port-au-Prince': [6.4, 6.8, 9.8, 15.4, 18.9, 24.8, 28.8, 28.0, 24.5, 19.2, 12.9, 7.5], // Haiti
-    'Georgetown': [5.7, 7.4, 9.4, 15.1, 20.2, 24.3, 29.1, 29.9, 24.6, 17.9, 13.2, 6.3], // Guyana
-    "St. George's": [3.9, 6.9, 11.2, 15.3, 18.7, 26.3, 28.1, 27.8, 24.0, 18.9, 12.9, 7.4], // Grenada
-    'Basseterre': [5.4, 5.8, 10.4, 15.9, 20.1, 26.1, 29.1, 27.8, 24.3, 19.4, 13.4, 6.5], // St. Kitts
+    // CARIBBEAN - Tropical, warm year-round
+    'Punta Cana': [28.0, 28.5, 29.0, 30.0, 31.0, 31.5, 32.0, 32.0, 31.5, 31.0, 30.0, 28.5], // Dominican Republic
+    'Kingston': [30.0, 30.0, 30.5, 31.0, 31.5, 32.5, 33.0, 33.0, 32.5, 31.5, 31.0, 30.0], // Jamaica
+    'Port of Spain': [31.0, 31.0, 32.0, 32.5, 32.0, 31.0, 31.0, 31.5, 32.0, 32.0, 31.5, 31.0], // Trinidad
+    'Bridgetown': [29.0, 29.0, 30.0, 30.5, 31.0, 31.0, 31.0, 31.5, 31.5, 31.0, 30.5, 29.5], // Barbados
+    'Nassau': [25.0, 25.5, 27.0, 29.0, 30.5, 32.0, 33.0, 33.0, 32.0, 30.0, 28.0, 26.0], // Bahamas
+    "St. John's": [28.0, 28.0, 29.0, 30.0, 31.0, 31.5, 32.0, 32.0, 31.5, 31.0, 30.0, 28.5], // Antigua
+    'Roseau': [28.0, 28.0, 29.0, 30.0, 31.0, 31.0, 31.5, 32.0, 31.5, 31.0, 30.0, 28.5], // Dominica
+    'Castries': [29.0, 29.0, 30.0, 30.5, 31.0, 31.0, 31.5, 31.5, 31.5, 31.0, 30.5, 29.5], // Saint Lucia
+    'Kingstown': [29.0, 29.0, 30.0, 30.5, 31.0, 31.0, 31.0, 31.5, 31.5, 31.0, 30.5, 29.5], // St. Vincent
+    'Port-au-Prince': [31.0, 31.5, 32.0, 32.5, 33.0, 34.0, 35.0, 34.5, 34.0, 33.0, 32.0, 31.0], // Haiti
+    'Georgetown': [29.0, 30.0, 30.5, 30.5, 30.0, 29.5, 30.0, 31.0, 32.0, 32.0, 31.0, 29.5], // Guyana
+    "St. George's": [29.0, 29.0, 30.0, 30.5, 30.5, 30.5, 30.5, 31.0, 31.0, 31.0, 30.5, 29.5], // Grenada
+    'Basseterre': [28.0, 28.0, 29.0, 30.0, 31.0, 31.5, 32.0, 32.0, 31.5, 31.0, 30.0, 28.5], // St. Kitts
 
-    // PACIFIC
-    'Suva': [5.5, 7.3, 10.8, 14.6, 18.7, 24.8, 29.4, 29.3, 24.3, 19.9, 13.8, 7.6], // Fiji
-    'Palikir': [5.0, 5.2, 9.4, 15.0, 19.7, 25.8, 28.4, 29.9, 24.7, 18.9, 12.4, 6.5], // Micronesia
-    'Apia': [4.3, 5.5, 8.5, 16.1, 19.5, 23.6, 29.4, 28.1, 25.5, 20.3, 13.8, 6.1], // Samoa
-    "Nuku'alofa": [5.4, 6.3, 11.2, 14.5, 20.3, 24.3, 27.4, 28.4, 24.8, 19.1, 14.2, 6.5], // Tonga
-    'Ngerulmud': [5.9, 5.5, 10.8, 15.9, 21.4, 24.4, 27.5, 28.6, 26.1, 20.2, 11.7, 8.3], // Palau
-    'Port Vila': [5.0, 4.7, 10.4, 15.9, 20.6, 24.5, 29.3, 30.1, 24.2, 19.5, 12.6, 7.8], // Vanuatu
-    'Funafuti': [5.7, 5.2, 9.4, 16.3, 19.3, 24.0, 28.0, 30.0, 26.0, 17.6, 13.1, 7.1], // Tuvalu
+    // PACIFIC - Mix of Northern and Southern Hemisphere
+    // Fiji (Southern Hemisphere)
+    'Suva': [30.0, 30.0, 29.5, 28.0, 26.5, 25.0, 24.5, 25.0, 26.0, 27.5, 28.5, 29.5], // Fiji ✓
+    // Micronesia (near Equator)
+    'Palikir': [27.0, 27.0, 27.5, 28.0, 28.0, 27.5, 27.0, 27.0, 27.5, 28.0, 28.0, 27.5], // Micronesia
+    // Samoa (Southern Hemisphere)
+    'Apia': [29.5, 29.5, 29.0, 28.0, 27.0, 26.0, 26.0, 26.5, 27.0, 28.0, 28.5, 29.0], // Samoa ✓
+    // Tonga (Southern Hemisphere)
+    "Nuku'alofa": [29.0, 29.0, 28.5, 26.0, 24.0, 22.0, 21.5, 22.0, 23.0, 25.0, 27.0, 28.5], // Tonga ✓
+    // Palau (near Equator)
+    'Ngerulmud': [29.0, 29.0, 29.5, 30.0, 30.0, 29.5, 29.0, 29.0, 29.5, 30.0, 30.0, 29.5], // Palau
+    // Vanuatu (Southern Hemisphere)
+    'Port Vila': [30.0, 30.0, 29.5, 27.5, 25.5, 24.0, 23.5, 24.0, 25.0, 27.0, 28.5, 29.5], // Vanuatu ✓
+    // Tuvalu (near Equator)
+    'Funafuti': [30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 29.5, 29.5, 30.0, 30.0, 30.5, 30.5], // Tuvalu
 
     // INDIAN OCEAN
-    'Male': [5.5, 5.2, 11.1, 15.2, 20.1, 26.3, 26.7, 30.1, 23.5, 18.9, 14.3, 8.3], // Maldives
-    'Victoria': [4.1, 6.4, 9.6, 16.1, 18.7, 24.2, 29.4, 28.9, 25.5, 19.4, 12.0, 7.2], // Seychelles
+    // Maldives (near Equator)
+    'Male': [30.0, 31.0, 31.5, 32.0, 31.5, 30.5, 30.0, 30.0, 30.0, 30.5, 30.5, 30.0], // Maldives
+    // Seychelles (Southern Hemisphere, near Equator)
+    'Victoria': [29.5, 30.0, 30.0, 30.5, 29.5, 28.0, 27.0, 27.5, 28.0, 29.0, 29.5, 29.5], // Seychelles
 
     // WESTERN EUROPE
     'Berlin': [5.7, 6.3, 8.7, 16.4, 18.9, 24.5, 28.1, 28.9, 25.5, 20.3, 13.0, 7.7], // Germany
@@ -415,13 +456,62 @@ const getWeatherCondition = (temp, month) => {
 };
 
 // =====================================================
+// SOUTHERN HEMISPHERE COUNTRIES
+// Countries with negative latitude (below equator)
+// These have reversed seasons compared to Northern Hemisphere
+// =====================================================
+const SOUTHERN_HEMISPHERE_CITIES = [
+    // South America
+    'Rio de Janeiro', 'Buenos Aires', 'Santiago', 'Lima', 'Montevideo',
+    'Asuncion', 'La Paz',
+    // Africa
+    'Cape Town', 'Port Louis', 'Gaborone', 'Mbabane', 'Luanda', 'Lusaka',
+    'Nairobi', 'Dar es Salaam', 'Antananarivo', 'Harare', 'Maputo', 'Kigali',
+    // Pacific/Oceania  
+    'Suva', 'Apia', "Nuku'alofa", 'Port Vila',
+    // Indian Ocean
+    'Victoria', // Seychelles
+    // Southeast Asia (near equator, but technically south)
+    'Bali', 'Dili',
+    // Australia & New Zealand (if added)
+    'Sydney', 'Auckland'
+];
+
+// Helper function to check if city is in Southern Hemisphere
+const isInSouthernHemisphere = (city) => {
+    return SOUTHERN_HEMISPHERE_CITIES.includes(city);
+};
+
+// Helper function to get adjusted month for Southern Hemisphere
+// Southern Hemisphere seasons are opposite: their summer is Dec-Feb, winter is Jun-Aug
+const getAdjustedMonth = (month, city) => {
+    if (isInSouthernHemisphere(city)) {
+        // Offset by 6 months for southern hemisphere
+        // January (0) in NH = July (6) weather equivalent in SH
+        // But since our CLIMATE_DATA already has actual monthly temps,
+        // we don't need to offset - the data should reflect actual temps for that month
+        // HOWEVER, if the data was entered with NH logic, we need to adjust
+        // 
+        // The correct approach: CLIMATE_DATA should store actual temps for each month
+        // So Cape Town January = 26°C (their summer) is correct
+        // No adjustment needed if data is properly stored
+
+        // Let's check: if CLIMATE_DATA[Cape Town][0] = 26 (January = summer), data is correct
+        // We just need to use the month directly
+        return month;
+    }
+    return month;
+};
+
+// =====================================================
 // WEATHER FUNCTION - Uses Mock Climate Data
 // Returns average temperature for the month of travel
+// Considers hemisphere for accurate seasonal weather
 // =====================================================
-export const fetchWeather = async (city, dateString) => {
+export const fetchWeather = async (city, dateString, countryLat = null) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            // Get the month from the date string (0-indexed)
+            // Get the month from the date string (0-indexed: 0=Jan, 11=Dec)
             let month;
             if (dateString) {
                 const date = new Date(dateString);
@@ -435,14 +525,23 @@ export const fetchWeather = async (city, dateString) => {
             const temperatures = CLIMATE_DATA[city];
 
             if (temperatures) {
-                const temp = temperatures[month];
+                // Use the month directly - CLIMATE_DATA should have actual temps per month
+                // The data is stored as [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+                // So for Southern Hemisphere cities, January temp = their summer temp (high)
+                // and July temp = their winter temp (low)
+                const adjustedMonth = getAdjustedMonth(month, city);
+                const temp = temperatures[adjustedMonth];
+
                 // Add small random variation (-2 to +2 degrees) for realism
                 const variation = (Math.random() * 4) - 2;
                 const finalTemp = Math.round((temp + variation) * 10) / 10;
 
-                const weatherCondition = getWeatherCondition(temp, month);
+                // For weather condition, consider if it's winter or summer in that location
+                const isSouthern = isInSouthernHemisphere(city);
+                const weatherCondition = getWeatherConditionWithHemisphere(temp, month, isSouthern);
 
-                console.log(`🌡️ Mock weather for ${city} (Month ${month + 1}): ${finalTemp}°C`);
+                const hemisphere = isSouthern ? '🌍 Southern' : '🌍 Northern';
+                console.log(`🌡️ Mock weather for ${city} (Month ${month + 1}, ${hemisphere}): ${finalTemp}°C`);
 
                 resolve({
                     main: { temp: finalTemp },
@@ -460,6 +559,30 @@ export const fetchWeather = async (city, dateString) => {
             }
         }, 100); // Simulate small delay for UX
     });
+};
+
+// Weather conditions based on temperature, month, and hemisphere
+const getWeatherConditionWithHemisphere = (temp, month, isSouthern) => {
+    // Determine if it's winter in the location
+    let isWinter, isSummer;
+
+    if (isSouthern) {
+        // Southern Hemisphere: Winter = Jun-Aug, Summer = Dec-Feb
+        isWinter = month >= 5 && month <= 7; // June, July, August
+        isSummer = month >= 11 || month <= 1; // December, January, February
+    } else {
+        // Northern Hemisphere: Winter = Dec-Feb, Summer = Jun-Aug
+        isWinter = month >= 11 || month <= 1; // December, January, February
+        isSummer = month >= 5 && month <= 7; // June, July, August
+    }
+
+    if (temp <= 0) return 'Snow';
+    if (temp <= 5) return isWinter ? 'Clouds' : 'Clear';
+    if (temp <= 10) return 'Clouds';
+    if (temp <= 15) return isSummer ? 'Clear' : 'Clouds';
+    if (temp <= 22) return 'Clear';
+    if (temp <= 28) return 'Clear';
+    return 'Clear'; // Hot weather is usually clear
 };
 
 // =====================================================

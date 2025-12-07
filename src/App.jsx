@@ -70,11 +70,14 @@ function App() {
           return filters.weather.some(condition => {
             switch (condition) {
               case 'sunny':
-                return temp >= 20;
+                // Hot/Sunny: Above 25°C
+                return temp >= 25;
               case 'mild':
-                return temp >= 10 && temp < 20;
+                // Mild/Pleasant: 15°C to 25°C
+                return temp >= 15 && temp < 25;
               case 'snow':
-                return temp < 5;
+                // Cold/Snowy: Below 15°C
+                return temp < 15;
               default:
                 return true;
             }

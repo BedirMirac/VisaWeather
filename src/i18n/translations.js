@@ -21,9 +21,9 @@ const translations = {
         weather: "Hava Durumu",
         weatherOptions: {
             "any": "Tümü",
-            "sunny": "Güneşli (>20°C)",
-            "mild": "Ilık (10-20°C)",
-            "snow": "Soğuk/Kar (<5°C)"
+            "sunny": "Sıcak (>25°C)",
+            "mild": "Ilık (15-25°C)",
+            "snow": "Serin/Soğuk (<15°C)"
         },
         departureDate: "Gidiş Tarihi",
         returnDate: "Dönüş Tarihi",
@@ -71,9 +71,9 @@ const translations = {
         weather: "Weather",
         weatherOptions: {
             "any": "Any Weather",
-            "sunny": "Sunny (>20°C)",
-            "mild": "Mild (10-20°C)",
-            "snow": "Cold/Snow (<5°C)"
+            "sunny": "Hot (>25°C)",
+            "mild": "Mild (15-25°C)",
+            "snow": "Cool/Cold (<15°C)"
         },
         departureDate: "Departure",
         returnDate: "Return",
